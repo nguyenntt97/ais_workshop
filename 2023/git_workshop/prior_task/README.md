@@ -32,3 +32,7 @@ Gitインストール完了:
 Visual Studio Codeを開き、左側のナビゲーションペインにあるSource Controlを確認します。
 
 ![VSCode's source control](https://code.visualstudio.com/assets/docs/sourcecontrol/overview/initialize-repository.png)
+
+### Task 3
+
+チケットの指示に従い、自分のアカウント情報をコメントすると、リポジトリの協力者として追加されますーsee [GitHub チケット](https://github.com/nguyenntt97/ais_workshop/issues/1)
