@@ -14,6 +14,7 @@
 - [ ] VSCodeインストール [[VSCode メインページ]](https://code.visualstudio.com/)
   - タスクコンプリート状態確認、参照 [VSCodeインストール完了](#task-2)
 - [ ] GitHubのアカウントを登録する [[チュートリアル]](https://learn.microsoft.com/en-us/visualstudio/version-control/git-create-github-account?view=vs-2022)
+  - タスクコンプリート状態確認、参照 [登録完了](#task-3)
 
 ## 2. 完成度検証
 
