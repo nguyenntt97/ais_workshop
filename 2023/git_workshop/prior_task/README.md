@@ -32,7 +32,7 @@ Gitインストール完了:
 
 Visual Studio Codeを開き、左側のナビゲーションペインにあるSource Controlを確認します。
 
-![VSCode's source control](https://code.visualstudio.com/assets/docs/sourcecontrol/overview/initialize-repository.png | width=100)
+<center><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/initialize-repository.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" height="300" /></center>
 
 ### Task 3
 
