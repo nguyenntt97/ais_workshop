@@ -11,7 +11,7 @@
 
 <p align="center">
 <img src="https://winaero.com/blog/wp-content/uploads/2020/07/OneDrive-File-Version-History-menu-3.png" height="300" />
-<em>Onedriveのドキュメントレベルの変更履歴</em>
+<em>Fig.1. Onedriveのドキュメントレベルの変更履歴</em>
 </p>
 
 ### Change/Version
@@ -31,7 +31,7 @@
 <p align="center">
 <img src="../assets/intro_commit-visual.svg" height="300" width="700"/>
 <br>
-<em>バージョン管理システムは、プロジェクト全体の開始時点から最新バージョン（青いボール）までのすべての変更点（白いボール）を追跡</em>
+<em>Fig.2. バージョン管理システムは、プロジェクト全体の開始時点から最新バージョン（青いボール）までのすべての変更点（白いボール）を追跡</em>
 </p>
 
 同じファイルを何人もの人が作っていると、同時に何種類ものバージョンが存在することになります。
