@@ -138,9 +138,64 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 Gitは追跡しているファイルのバージョン変更のみを監視します。そのため、ユーザーはGitが追跡する必要のあるファイルを宣言しなければなりません。
 
-| Gitのリポジトリフォルダ内のファイルは、2つの状態のいずれかになります:
-| - Tracked - Gitが知っていて、リポジトリに追加されたファイル
-| - Untracked - 作業ディレクトリにあるが、リポジトリに追加されていないファイル
+> Gitのリポジトリフォルダ内のファイルは、2つの状態のいずれかになります:
+> - Tracked - Gitが知っていて、リポジトリに追加されたファイル
+> - Untracked - 作業ディレクトリにあるが、リポジトリに追加されていないファイル
+
+Gitでファイルを追跡するには、次のようにします。
+
+```bash
+$ git add naruto.txt
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   naruto.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        onepiece.txt
+
+$ git add onepiece.txt
+...
+```
+
+また、すべてのファイルを同時に追加することもできます。
+
+```bash
+$ git add .
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   naruto.txt
+        new file:   onepiece.txt
+```
+
+> Git フォルダ内の任意の場所に、単一のファイルあるいはディレクトリ全体を追加することができます。
+
+
+> `.` はカレントディレクトリを表します。
+>
+> `git add .` は、カレントディレクトリとその子から、追跡されていないファイルをすべて追加することを意味します。
+
+> もし、ルートディレクトリにいないときにすべてのファイルを追加したい場合は、`git add --all` を使用してください。
+
+### 変更をコミットにまとめる
+
+```bash
+$ git commit -m "my first commit"
+[master (root-commit) 473f896] my first commit
+ 2 files changed, 11 insertions(+)
+ create mode 100644 naruto.txt
+ create mode 100644 onepiece.txt
+```
 
 ### Repository
 
