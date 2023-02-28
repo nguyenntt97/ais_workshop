@@ -51,6 +51,8 @@ color.diff=auto
 
 詳細については—see [[SCM Book]](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
 
+--- 
+
 ## Scenario 1
 
 ### シナリオの説明
@@ -59,9 +61,7 @@ color.diff=auto
 
 対象コマンド: `init`, `add`, `commit`, `log`
 
-### シナリオ1案内
-
-1. プロジェクト用の新しいフォルダを作成しましょう。
+### 1. 新しいgitフォルダの作成
 
 ```bash
 $ mkdir manga_db
@@ -110,7 +110,9 @@ total 0
 -rwxrwxrwx 1 elchris elchris 36 Feb 28 23:17 onepiece.txt
 ```
 
-2. 次に、Git の状態をチェックして、それが私たちのレポの一部であるかどうかを確認します。
+### 2. リポジトリ内のファイルの状態を確認する
+
+次に、Git の状態をチェックして、それが私たちのレポの一部であるかどうかを確認します。
 
 ```bash
 $ git status
