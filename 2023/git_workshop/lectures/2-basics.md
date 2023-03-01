@@ -64,7 +64,7 @@ Gitは、プロジェクトの変更をブランチとコミットで管理し�
 リポジトリは多くのブランチを持つことができますが、メイン (`main`) ブランチ（またはマスター [`master`] ブランチ）は1つだけです。
 
 <p align="center">
-<img src="https://www.nobledesktop.com/image/gitresources/git-branches-merge.png" width="700"/>
+<img src="https://www.nobledesktop.com/image/gitresources/git-branches-merge.png" width="400"/>
 <br>
 <em>Fig. ユーザーが master ブランチを変更すると、新しいブランチが作成されます。作業を終えたら、その変更を master ブランチに再リンクします。</em>
 </p>
