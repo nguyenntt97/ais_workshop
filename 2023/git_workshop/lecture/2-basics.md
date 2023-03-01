@@ -25,9 +25,10 @@ git version 2.30.2.windows.1
 そのため、将来のコミットに含めるために、自分の情報を git に宣言する必要があります。
 
 ```bash
-$ git config --global user.name "John Doe"
-$ git config --global user.email johndoe@example.com
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
 ```
+
 <p align="center">
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/i/itstaffing/20200617/20200617134342.jpg" height="150" />
 <br>
@@ -51,7 +52,7 @@ color.diff=auto
 
 詳細については—see [[SCM Book]](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
 
---- 
+---
 
 ## Scenario 1
 
@@ -64,8 +65,8 @@ color.diff=auto
 ### 1. 新しいgitフォルダの作成
 
 ```bash
-$ mkdir manga_db
-$ cd manga_db
+mkdir manga_db
+cd manga_db
 ```
 
 ```bash
@@ -139,6 +140,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 Gitは追跡しているファイルのバージョン変更のみを監視します。そのため、ユーザーはGitが追跡する必要のあるファイルを宣言しなければなりません。
 
 > Gitのリポジトリフォルダ内のファイルは、2つの状態のいずれかになります:
+>
 > - Tracked - Gitが知っていて、リポジトリに追加されたファイル
 > - Untracked - 作業ディレクトリにあるが、リポジトリに追加されていないファイル
 
@@ -180,7 +182,6 @@ Changes to be committed:
 
 > Git フォルダ内の任意の場所に、単一のファイルあるいはディレクトリ全体を追加することができます。
 
-
 > `.` はカレントディレクトリを表します。
 >
 > `git add .` は、カレントディレクトリとその子から、追跡されていないファイルをすべて追加することを意味します。
@@ -197,6 +198,79 @@ $ git commit -m "my first commit"
  create mode 100644 onepiece.txt
 ```
 
+Gitがコミットを追跡しているかどうかを確認するには
+
+```bash
+$ git log
+commit 473f896d358535b5473205c1661a9d40b99382e4 (HEAD -> master)
+Author: elchris <nguyenng178@gmail.com>
+Date:   Tue Feb 28 23:49:27 2023 +0900
+
+    my first commit
+```
+
+すべてのコミットに対しては
+
+- Gitに割り当てられた一意のハッシュで: `...99382e4`
+- コミットのブランチ: `(HEAD -> master)`
+- 著者名
+- コミットメッセージ
+
+### Gitコミット - 実践編1
+
+#### 実践編1: 要求事項
+
+1. リポジトリに新しいファイルを追加しました (`toloveru.txt`)。内容については
+
+```plain
+# ./toloveru.txt
+
+riku
+lala
+haruna
+```
+
+2. `zoro` の行を `naruto.txt` から `onepiece.txt` に移動する。
+3. これら2つの変更をメッセージ付きのコミットにまとめます。(例: `-m "間違った世界を修正するゾロ"`)
+4. 自分のコミットが Git に記録されているかどうかを確認するには、`git log` を使用します。
+
+*すべての要件が終了したら、次の方法で正しく実行されているかどうかを確認することについては*ーsee [[完成度検証]](#実践編1-完成度検証)
+
+---
+
+#### 実践編1: 完成度検証
+
+必要事項を確認するには、以下の手順に従ってください。
+
+1. リポジトリに3つのファイルがあることを確認します。
+
+```bash
+$ ll
+total 0
+-rwxrwxrwx 1 elchris elchris 42 Feb 28 23:58 naruto.txt
+-rwxrwxrwx 1 elchris elchris 36 Feb 28 23:17 onepiece.txt
+-rwxrwxrwx 1 elchris elchris 35 Mar  1 09:52 toloveru.txt
+```
+
+次に、ゾロはNARUTOではなくONE PIECEにいるべきということで、`naruto.txt`から削除し、`onepiece.txt`に追加することにします。
+
+```plain
+# ./naruto.txt
+
+naruto
+sasuke
+sakura
+```
+
+```plain
+# ./onepiece.txt
+
+luffy
+nami
+boa
+zoro
+```
+
 ### Repository
 
 リポジトリとは、あるものの倉庫を意味する。
@@ -210,7 +284,7 @@ Gitでは、Gitにバージョン管理をさせたいディレクトリにリ�
 
 ### git init
 
-### 
+###
 
 - チームリーダーがプロジェクトのチーム・リポジトリ (`Repository` or `Git Repo.`) を作成
 - 自分のマシンにGitシステムをインストールする必要があります。
