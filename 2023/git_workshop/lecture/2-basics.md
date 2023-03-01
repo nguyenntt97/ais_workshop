@@ -390,6 +390,116 @@ git config --global credential.helper store
 <em>Fig. 最終的な結果は、リモートリポジトリが新しくプッシュされたコミットに更新されたことになります。</em>
 </p>
 
+### 4. 他のマシンのリモートリポジトリをクローンする場合
+
+ローカルリポジトリがGitHubに完全にバックアップされていれば、あなたも含めて誰でも自分のマシンにクローンすることができるのです。
+
+プロジェクトを別のコンピューターにクローンするシナリオをシミュレートするために、GitHubのレポをコンピューターの新しい場所にクローンしてみましょう。
+
+1. `manga_db/` ディレクトリから抜け出し、新たに `manga_db_copy/` ディレクトリを作成します。
+
+```plain
+.
+|-manga_db/
+|-manga_db_copy/
+```
+
+2. GitHubのレポを `manga_db_copy` リポジトリにクローンする。
+
+```bash
+$ git clone https://github.com/elchris97/ais-workshop23.git
+Cloning into 'ais-workshop23'...
+remote: Enumerating objects: 12, done.
+remote: Counting objects: 100% (12/12), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 12 (delta 0), reused 12 (delta 0), pack-reused 0
+Receiving objects: 100% (12/12), done. 
+```
+
+3. GitHub のウェブインタフェースで `onepiece.txt` ファイルを再変更してみる。変更後、メッセージを添えてコミットしてください。
+
+<p align="center">
+<img src="../assets/basics_edit-file.png" height="300" />
+<br>
+<em>Fig. 最終的な結果は、リモートリポジトリが新しくプッシュされたコミットに更新されたことになります。</em>
+</p>
+
+4. リモートレポとローカルレポの履歴を比較します。両者は異なっていますか？
+
+```bash
+$ git log --oneline
+afd042b (HEAD -> main, origin/main, origin/HEAD) update naruto
+0884904 トローベルを追加と間違った世界を修正するゾロ
+cda059e my first commit
+```
+
+<p align="center">
+<img src="../assets/basics_compare-history.png" height="300" />
+<br>
+<em>Fig. 最終的な結果は、リモートリポジトリが新しくプッシュされたコミットに更新されたことになります。</em>
+</p>
+
+5. オリジン・レポからGitのローカル履歴を更新するには、2つのコマンドがあります。コマンドは `fetch` と `pull` の2つである。
+
+> Git はリモートブランチ (例：`branch-a`) のクローンをローカルリポジトリの `origin/branch-a` として保持します。
+>
+> ユーザーはこのクローンのコミット履歴ツリーを最新のものに更新し、新しいコミットをリモートリポジトリにプッシュする前に競合を解決する必要があります。
+
+*ここまでの例では、コンフリクトはありません。マージコンフリクトについては、シナリオ3で詳しく説明します。*
+
+これにより、投稿者はローカルブランチとリモートブランチのワークスペース（コミット履歴ツリー）をより柔軟に区別することができます。
+
+<p align="center">
+<img src="https://www.masatom.in/pukiwiki/?plugin=ref&page=GitHub%2F%A5%ED%A1%BC%A5%AB%A5%EB%A1%A6%A5%EA%A5%E2%A1%BC%A5%C8%A5%D6%A5%E9%A5%F3%A5%C1%A4%C8origin%A4%CE%A4%CF%A4%CA%A4%B7&src=02.png" height="300" />
+<br>
+<em>Fig. ローカルリポジトリは、リモートリポジトリに履歴ログを適用することができます。ローカルリポジトリは、ローカルの履歴を更新するために、リモートの履歴ログを取得することもできます。<br>画像作：masatom.in</em>
+</p>
+
+- `git fetch`: リモートからの新しい変更を適用せずに、ローカルのリポジトリ履歴を更新するには。
+- `git pull`: `git fetch` と似ていますが、変更をローカルブランチに反映させることができます。
+
+Git では、プッシュする前にローカルリポジトリがリモートから最新の履歴を取得する必要があります。最新のリモート履歴を持たずに (pull で) push コマンドを実行すると、この通知とともにリモートリポジトリから push が拒否されます。
+
+<p align="center">
+<img src="https://global.discourse-cdn.com/freecodecamp/original/3X/0/8/0878ff22f085511cbc7871363ad18f846df3b11a.png" height="300" />
+<br>
+<em>Fig. 最新のリモート履歴を持たずに (pull で) push コマンドを実行すると、この通知とともにリモートリポジトリから push が拒否されます。<br>画像作：freecodecamp</em>
+</p>
+
+## Mergeとは
+
+ローカルで最新の履歴ログを D ポイント(紫)でプルし、コミット E, F, G を実行します。
+
+同時に、誰かがリモートリポジトリに新しいコミット A, B, C をプッシュしました。
+
+この時点で、Git はあなたの変更 (G) を現在のリモートの変更 (C) と組み合わせずに適用することを許可していません。GとCを結合する動作は、`Git Merge`と呼ばれます。
+
+<p align="center">
+<img src="../assets/before_merge.svg" height="300" />
+<br>
+<em>Fig. ローカル (青) とリモート (緑) の両方のレポの履歴ログに新しいコミットがあるとき、ふたつの HEAD を再び同期させるには、ローカルがリモートの HEAD (緑) から情報を取得して (`git fetch`) 新しい変更と現在の変更を一緒にする必要がありました。<br>画像作：atlassian.com/git/tutorials</em>
+</p>
+
+<p align="center">
+<img src="../assets/after_merge.svg" height="300" />
+<br>
+<em>Fig. 上の図では、新しいコミット H が見えます。このコミットは、リモート A-B-C のコミットの内容を含む新しいマージコミットで、ログメッセージも結合されています。<br>画像作：atlassian.com/git/tutorials</em>
+</p>
+
+変更がリモートの変更に影響を与えない場合、2つのHEADは静かにマージされます。しかし、2つの変更が互いに影響しあう場合、後の作者がマージコミットでその衝突を解決しなければなりません。
+
+## Scenario 3
+
+現在のブランチでの単純な衝突を解決するには？
+
+<p align="center">
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/pawct0wdxf_9HUTt.png" height="300" />
+<br>
+<em>Fig. 既存の同じコード行に2つの変更が発生した場合、マージコンフリクトイベントが発生します。<br>画像作：viblo.asia</em>
+</p>
+
+### 1. コンフリクトイベントをシミュレートする
+
 ### Repository
 
 リポジトリとは、あるものの倉庫を意味する。
