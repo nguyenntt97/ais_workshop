@@ -56,11 +56,14 @@ color.diff=auto
 
 ## Scenario 1
 
-### シナリオの説明
-
 新しいプロジェクトのためにローカルリポジトリを作成したいとします。後は、変更を加えたので、変更内容を確認したい。
 
 対象コマンド: `init`, `add`, `commit`, `log`
+
+1. [新しいgitフォルダの作成](#1-新しいgitフォルダの作成)
+2. [リポジトリ内のファイルの状態を確認する](#2-リポジトリ内のファイルの状態を確認する)
+3. [変更をコミットにまとめる](#3-変更をコミットにまとめる)
+4. [実践編1: git commit](#4-実践編1-git-commit)
 
 ### 1. 新しいgitフォルダの作成
 
@@ -188,7 +191,7 @@ Changes to be committed:
 
 > もし、ルートディレクトリにいないときにすべてのファイルを追加したい場合は、`git add --all` を使用してください。
 
-### 変更をコミットにまとめる
+### 3. 変更をコミットにまとめる
 
 ```bash
 $ git commit -m "my first commit"
@@ -216,7 +219,7 @@ Date:   Tue Feb 28 23:49:27 2023 +0900
 - 著者名
 - コミットメッセージ
 
-### Gitコミット - 実践編1
+### 4. 実践編1: Git Commit
 
 #### 実践編1: 要求事項
 
@@ -231,7 +234,7 @@ haruna
 ```
 
 2. `zoro` の行を `naruto.txt` から `onepiece.txt` に移動する。
-3. これら2つの変更をメッセージ付きのコミットにまとめます。(例: `-m "間違った世界を修正するゾロ"`)
+3. これら2つの変更をメッセージ付きのコミットにまとめます。(例: `-m "トローベルを追加と間違った世界を修正するゾロ"`)
 4. 自分のコミットが Git に記録されているかどうかを確認するには、`git log` を使用します。
 
 *すべての要件が終了したら、次の方法で正しく実行されているかどうかを確認することについては*ーsee [[完成度検証]](#実践編1-完成度検証)
@@ -252,24 +255,73 @@ total 0
 -rwxrwxrwx 1 elchris elchris 35 Mar  1 09:52 toloveru.txt
 ```
 
-次に、ゾロはNARUTOではなくONE PIECEにいるべきということで、`naruto.txt`から削除し、`onepiece.txt`に追加することにします。
+2. 次に、ゾロはNARUTOではなくONE PIECEにいるべきということで、`naruto.txt`から削除し、`onepiece.txt`に追加することにします。
 
-```plain
-# ./naruto.txt
-
-naruto
-sasuke
-sakura
+```bash
+$ git status --short
+ M naruto.txt
+ M onepiece.txt
+?? toloveru.txt
 ```
 
-```plain
-# ./onepiece.txt
+3.
 
-luffy
-nami
-boa
-zoro
+```bash
+$ git log                                                
+commit 08849046e901bf9e68476cedb9525abe10bab2dd (HEAD -> master)
+Author: ***** <*****>
+Date:   *****
+
+    トローベルを追加と間違った世界を修正するゾロ
+
+commit cda059ec679ac7752dc695bb4ac1d92aad3f0472
+Author: ***** <*****>
+Date:   *****
+
+    my first commit
 ```
+
+## Scenario 2
+
+リポジトリをリモートホストにプッシュする
+
+[[演習1]](#scenario-1)では、ローカルリポジトリを作成しただけで、誰もアクセスできない状態でした。自分の作品をみんなに見てもらうために、通常はリポジトリを公開ホスト（GitHubやGitLabなど）に置くことになります。
+
+対象コマンド: `push`,`checkout`,`branch`,`stash`
+
+### GitHub は?
+
+- リポジトリ共有などが可能なWebサービス（ｷﾞｯﾄﾊﾌﾞ）
+- 単なるアップロードの場を超えたコラボレーションの場
+  - Gitに不足している機能を補完する役割がある
+- 幾多のオープンソース活動がGitHub上で行われてる
+
+<p align="center">
+<img src="https://jlord.us/git-it/assets/imgs/remotes.png" height="300" />
+<br>
+<em>Fig. GitHubのようなリモートGitリポジトリホストは、リポをインターネット上に公開します。<br>画像作：jlord.us)</em>
+</p>
+
+なぜGitHubを使う必要があるのか？
+
+- 誰もがどこからでもあなたのコードにアクセスできる
+- ソースコードをオンラインで無料でバックアップできる
+- 別のコンピュータに移動した場合は、USBやローカルネットワークでコピーすることなく、プロジェクトのクローンを作成する必要があります。
+- 他の研究者のコードにリポジトリからアクセスすることもできます。
+
+### 1. GitHubのリモートリポジトリを作成する
+
+GitHubにアクセスし、`ais-workshop23`という名前で新しいリポジトリを作成します。オプションで `gitignore` や `README` を追加する場合は、チェックを入れないでください。
+
+詳しくはこの[[公式ガイド]](https://docs.github.com/ja/get-started/quickstart/hello-world#creating-a-repository)をご覧ください。
+
+<p align="center">
+<img src="../assets/basics_github-newrepo.png" height="300" />
+<br>
+<em>Fig. `manga_db`のコードをアップロードするために、リポジトリを作成します。Add a README file`などのオプションにはチェックを入れないでください。</em>
+</p>
+
+## 用語解説
 
 ### Repository
 
@@ -283,8 +335,6 @@ Gitでは、Gitにバージョン管理をさせたいディレクトリにリ�
 - リモートリポジトリ（`Remote Repository`; `Remote` = `ローカルではない`）をクローンする
 
 ### git init
-
-###
 
 - チームリーダーがプロジェクトのチーム・リポジトリ (`Repository` or `Git Repo.`) を作成
 - 自分のマシンにGitシステムをインストールする必要があります。
