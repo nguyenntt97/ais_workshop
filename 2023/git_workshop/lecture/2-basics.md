@@ -281,6 +281,8 @@ Date:   *****
     my first commit
 ```
 
+---
+
 ## Scenario 2
 
 リポジトリをリモートホストにプッシュする
@@ -316,12 +318,77 @@ GitHubにアクセスし、`ais-workshop23`という名前で新しいリポジ�
 詳しくはこの[[公式ガイド]](https://docs.github.com/ja/get-started/quickstart/hello-world#creating-a-repository)をご覧ください。
 
 <p align="center">
-<img src="../assets/basics_github-newrepo.png" height="300" />
+<img src="../assets/basics_github-newrepo.png" height="400" />
 <br>
 <em>Fig. `manga_db`のコードをアップロードするために、リポジトリを作成します。Add a README file`などのオプションにはチェックを入れないでください。</em>
 </p>
 
-## 用語解説
+### 2. ローカルレポを新しく作成されたリモートレポにプッシュ
+
+新しく作成したレポには、GitHub に最初にローカルレポをアップロードする手順が書かれています。
+
+```bash
+$ git remote add origin <あなたのGitHubレポのURL>
+$ git branch -M main
+$ git push -u origin main 
+Username for 'https://github.com':
+Password for 'https://elchris97@github.com':
+```
+
+ローカルリポとGitHubリモートリポをリンクするために、上記の3つのコマンドを使用しました。
+
+- `git remote add origin`: `origin` は GitHub へのリモート URL を表す
+- `git branch -M`: 現在のブランチ名を `master` (デフォルト) から `main` (GitHub 標準) に変更する
+- `git push -u origin`: 現在のブランチを直接ホストリポジトリにプッシュする場合。
+
+<p align="center">
+<img src="https://www.masatom.in/pukiwiki/?plugin=ref&page=GitHub%2F%A5%ED%A1%BC%A5%AB%A5%EB%A1%A6%A5%EA%A5%E2%A1%BC%A5%C8%A5%D6%A5%E9%A5%F3%A5%C1%A4%C8origin%A4%CE%A4%CF%A4%CA%A4%B7&src=01.png" height="300" />
+<br>
+<em>Fig. 新しく作成したレポには、GitHub に最初にローカルレポをアップロードする手順が書かれています<br>画像作：masatom.in</em>
+</p>
+
+`git push -u origin` の後、現在のブランチを GitHub リポジトリの `main` ブランチにプッシュします。リモートリポジトリへの書き込みは認証された人しかできないので、3つ目のコマンドの後に認証情報を聞かれます。
+
+```bash
+$ git push -u origin main 
+Username for 'https://github.com':
+Password for 'https://elchris97@github.com':
+```
+
+認証にはGitHubのユーザー名とパスワードを使用します。パスワードについては、GitHub パーソナルトークンを使用してパスワードを置き換えることが要求されますーsee [[公式ガイド]](https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#personal-access-token-classic-%E3%81%AE%E4%BD%9C%E6%88%90) - Personal Access Token (Classic) の作成
+
+デフォルトでは、Git はあなたの信用情報を記憶しないので、セキュリティで保護されたリモートリポジトリにプッシュするたびに信用情報を入力しなければなりません。
+
+不便なので、ローカルのGitにパスワードを記憶させるためには、このコマンドを使います。
+
+```bash
+git config --global credential.helper store
+```
+
+このコマンドを実行すると、最初にリモートリポジトリから pull または push するときに、ユーザー名とパスワードを聞かれます。
+
+その後、リモートリポジトリとの通信では、ユーザー名とパスワードを入力する必要はありません。
+
+保存形式は `.git-credentials` ファイルで、平文で保存されますーsee [stackoverflow](https://stackoverflow.com/questions/35942754/how-can-i-save-username-and-password-in-git)
+
+<p align="center">
+<img src="../assets/basics_github-commits.png" height="300" />
+<br>
+<em>Fig. リモートリポジトリへのプッシュが完了すると、ローカルと同じように git のコミット履歴を確認することができます。</em>
+</p>
+
+### 3. ローカルレポを新しく作成されたリモートレポにプッシュ
+
+ローカルリポジトリに変更を加えてからコミットし、新しいコミットを GitHub リポジトリにプッシュします。
+
+1. ローカルの `naruto.txt` ファイルを編集し、変更をコミットします。
+2. 新しいコミットをリモートブランチにプッシュします
+
+<p align="center">
+<img src="../assets/basics_github-newcommit.png" height="300" />
+<br>
+<em>Fig. 最終的な結果は、リモートリポジトリが新しくプッシュされたコミットに更新されたことになります。</em>
+</p>
 
 ### Repository
 
