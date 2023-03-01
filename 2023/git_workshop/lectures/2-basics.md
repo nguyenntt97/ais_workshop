@@ -29,15 +29,16 @@ Gitでは、Gitにバージョン管理をさせたいディレクトリにリ�
 
 <p align="center">
 <img src="https://www.w3docs.com/uploads/media/default/0001/03/3f26b30cc1dbda3424ceef3ab4977149906a0c58.png" height="300" />
-<em>`clone` は、自分のマシンにリモートリポジトリのコピーを作成します。</em>
+<br>
+<em>Fig.1. `clone` は、自分のマシンにリモートリポジトリのコピーを作成します。</em>
 </p>
 
-## Push & Pull
+### Push & Pull
 
 <p align="center">
 <img src="https://www.cs.swarthmore.edu/~newhall/unixhelp/git.jpg" height="300" />
 <br>
-<em>Fig. `push` (プッシュ) とは、ローカルリポジトリからリモートリポジトリに新しい変更を送信することです。`pull` (プル) は、リモートリポジトリからローカルリポジトリに新しい変更の更新を取得することを意味します。緒にする必要がありました。<br>画像作：atlassian.com/git/tutorials</em>
+<em>Fig.2. `push` (プッシュ) とは、ローカルリポジトリからリモートリポジトリに新しい変更を送信することです。`pull` (プル) は、リモートリポジトリからローカルリポジトリに新しい変更の更新を取得することを意味します。緒にする必要がありました。<br>画像作：atlassian.com/git/tutorials</em>
 </p>
 
 
@@ -58,7 +59,7 @@ Gitは、プロジェクトの変更をブランチとコミットで管理し�
 <p align="center">
 <img src="https://cdn.nulab.com/learn-wp/app/uploads/2022/09/14212532/recording_changes_001.png" width="700"/>
 <br>
-<em>Fig. バージョン管理システムは、プロジェクト全体の開始時点から最新バージョン（青い）までのすべての変更点（白い）を追跡</em>
+<em>Fig.3. バージョン管理システムは、プロジェクト全体の開始時点から最新バージョン（青い）までのすべての変更点（白い）を追跡</em>
 </p>
 
 ### Branch
@@ -72,7 +73,7 @@ Gitは、プロジェクトの変更をブランチとコミットで管理し�
 <p align="center">
 <img src="../assets/intro_commit-visual.svg" width="700"/>
 <br>
-<em>Fig. バージョン管理システムは、プロジェクト全体の開始時点から最新バージョン（青い）までのすべての変更点（白い）を追跡</em>
+<em>Fig.4. バージョン管理システムは、プロジェクト全体の開始時点から最新バージョン（青い）までのすべての変更点（白い）を追跡</em>
 </p>
 
 リポジトリは多くのブランチを持つことができますが、メイン (`main`) ブランチ（またはマスター [`master`] ブランチ）は1つだけです。
@@ -80,7 +81,7 @@ Gitは、プロジェクトの変更をブランチとコミットで管理し�
 <p align="center">
 <img src="https://www.nobledesktop.com/image/gitresources/git-branches-merge.png" width="400"/>
 <br>
-<em>Fig. ユーザーが master ブランチを変更すると、新しいブランチが作成されます。作業を終えたら、その変更を master ブランチに再リンクします。</em>
+<em>Fig.5. ユーザーが master ブランチを変更すると、新しいブランチが作成されます。作業を終えたら、その変更を master ブランチに再リンクします。</em>
 </p>
 
 この設計により、多くの人が同じディレクトリで待ち時間なく作業できるようになりました。
@@ -96,16 +97,24 @@ Gitは、プロジェクトの変更をブランチとコミットで管理し�
 <p align="center">
 <img src="../assets/before_merge.svg" height="300" />
 <br>
-<em>Fig. ローカル (青) とリモート (緑) の両方のレポの履歴ログに新しいコミットがあるとき、ふたつの HEAD を再び同期させるには、ローカルがリモートの HEAD (緑) から情報を取得して (`git fetch`) 新しい変更と現在の変更を一緒にする必要がありました。<br>画像作：atlassian.com/git/tutorials</em>
+<em>Fig.6. ローカル (青) とリモート (緑) の両方のレポの履歴ログに新しいコミットがあるとき、ふたつの HEAD を再び同期させるには、ローカルがリモートの HEAD (緑) から情報を取得して (`git fetch`) 新しい変更と現在の変更を一緒にする必要がありました。<br>画像作：atlassian.com/git/tutorials</em>
 </p>
 
 <p align="center">
 <img src="../assets/after_merge.svg" height="300" />
 <br>
-<em>Fig. 上の図では、新しいコミット H が見えます。このコミットは、リモート A-B-C のコミットの内容を含む新しいマージコミットで、ログメッセージも結合されています。<br>画像作：atlassian.com/git/tutorials</em>
+<em>Fig.7. 上の図では、新しいコミット H が見えます。このコミットは、リモート A-B-C のコミットの内容を含む新しいマージコミットで、ログメッセージも結合されています。<br>画像作：atlassian.com/git/tutorials</em>
 </p>
 
 変更がリモートの変更に影響を与えない場合、2つのHEADは静かにマージされます。しかし、2つの変更が互いに影響しあう場合、後の作者がマージコミットでその衝突を解決しなければなりません。
+
+## Scenarios Learning
+
+コマンドを個別に覚えるのではなく、私が研究で経験したさまざまな実戦の中で学んでほしいと思っています。
+
+1. [シナリオ　＃１:](./3-scenario_1.md) 新しいプロジェクトのためにローカルリポジトリを作成したいとします。後は、変更を加えたので、変更内容を確認してもっと古いバージョンに戻したいとか。
+2. [シナリオ　＃２:](./4-scenario_2.md) 自分の作品をみんなに見てもらうために、通常はリポジトリを公開ホスト（GitHubやGitLabなど）に置くことになります。
+3. [シナリオ　＃３:](./5-scenario_3.md) 自分と他の人が同じファイルを編集していて競合が発生した場合、競合を解消して自分の変更をリモートブランチにプッシュしたい。
 
 ## Setup Git
 
@@ -129,7 +138,7 @@ git config --global user.email johndoe@example.com
 <p align="center">
 <img src="https://cdn-ak.f.st-hatena.com/images/fotolife/i/itstaffing/20200617/20200617134342.jpg" height="150" />
 <br>
-<em>Fig. 他のチームメンバーがリビジョンの原因を知り、連絡を取るためのユーザー名と電子メール. <br>画像作：あいさん・r-staffing</em>
+<em>Fig.8. 他のチームメンバーがリビジョンの原因を知り、連絡を取るためのユーザー名と電子メール. <br>画像作：あいさん・r-staffing</em>
 </p>
 
 ### 現在設定を確認
