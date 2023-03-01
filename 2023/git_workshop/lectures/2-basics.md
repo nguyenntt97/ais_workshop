@@ -27,6 +27,20 @@ Gitでは、Gitにバージョン管理をさせたいディレクトリにリ�
 - 自分用のリポジトリ（ローカルリポジトリ, `Local Repository`）を作成する
 - リモートリポジトリ（`Remote Repository`; `Remote` = `ローカルではない`）をクローンする
 
+<p align="center">
+<img src="https://www.w3docs.com/uploads/media/default/0001/03/3f26b30cc1dbda3424ceef3ab4977149906a0c58.png" height="300" />
+<em>`clone` は、自分のマシンにリモートリポジトリのコピーを作成します。</em>
+</p>
+
+## Push & Pull
+
+<p align="center">
+<img src="https://www.cs.swarthmore.edu/~newhall/unixhelp/git.jpg" height="300" />
+<br>
+<em>Fig. `push` (プッシュ) とは、ローカルリポジトリからリモートリポジトリに新しい変更を送信することです。`pull` (プル) は、リモートリポジトリからローカルリポジトリに新しい変更の更新を取得することを意味します。緒にする必要がありました。<br>画像作：atlassian.com/git/tutorials</em>
+</p>
+
+
 ---
 
 Gitは、プロジェクトの変更をブランチとコミットで管理します。Gitのバージョン管理機能には、以下のようなものがある:
@@ -137,16 +151,13 @@ color.diff=auto
 
 ---
 
+## Gitコマンド
+
 ### git init
 
 - チームリーダーがプロジェクトのチーム・リポジトリ (`Repository` or `Git Repo.`) を作成
 - 自分のマシンにGitシステムをインストールする必要があります。
 - すべての貢献者は、元のリポジトリ（またはリモートリポジトリ, `Remote Repository`）を自分のマシンにクローン(`clone`)します。貢献者は自分のローカルリポジト(`Local Repository`)リを変更します。
-
-<p align="center">
-<img src="https://www.w3docs.com/uploads/media/default/0001/03/3f26b30cc1dbda3424ceef3ab4977149906a0c58.png" height="300" />
-<em>`clone` は、自分のマシンにリモートリポジトリのコピーを作成します。</em>
-</p>
 
 - 自分のローカルコピーをプロジェクトの最新版(他の貢献者による変更)に更新するには、`git pull`（`pull` = `取って`）を使用します。
 - いくつかの変更 (`change`) を行った後、投稿者は変更を意味のあるバージョン・コミット (`commit`) にまとめることができます。
