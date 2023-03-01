@@ -8,6 +8,7 @@
 > - [ ] 変更 (Change)、バージョン (Version)、管理バージョン (Version Control)は？
 > - [ ] バージョン管理をしなかった場合はどうなるのか？
 > - [ ] バージョン管理はどのように役立つのでしょうか？
+> - [ ] Visual Studioや他のGUIツールでバージョン管理を行うには？
 
 <p align="center">
 <img src="https://winaero.com/blog/wp-content/uploads/2020/07/OneDrive-File-Version-History-menu-3.png" height="300" />
