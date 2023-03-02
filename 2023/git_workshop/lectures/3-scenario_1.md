@@ -1,68 +1,15 @@
-# Gitの基本コマンド
-
-このセクションでは、Gitの基本的なコマンドを紹介します。これらのコマンドは、作業環境において日常的に使用する最も一般的なものです。
-
-`Git`のコマンドはたくさんあり（約`140コマンド`）、高度な概念もあるため、このワークショップの目的は、誰もが研究において基本的に必要なGitを使えるようになるための導入にとどまるものです。
-
-このノートに目標は以下の通り、
-
-- [ ] gitの基本的なコマンドを理解し、使用することができる (`clone`,`init`,`fetch`,`config`,`pull`,`add`,`commit`,`branch`,`checkout`,`diff`)
-- [ ] 基本的なコマンドを適用して目的を達成することができる
-- [ ] 自分のワークスペースのバージョン管理で一般的なシナリオを理解することができる
-
-## Setup Git
-
-### Gitのインストールを確認
-
-```bash
-$ git --version
-git version 2.30.2.windows.1
-```
-
-### 設定ID
-
-多くのユーザーが同じリポジトリで作業する可能性があるため、すべてのコミットには作者名（ユーザー名とメールアドレス）を含める必要があります。
-そのため、将来のコミットに含めるために、自分の情報を git に宣言する必要があります。
-
-```bash
-git config --global user.name "John Doe"
-git config --global user.email johndoe@example.com
-```
-
-<p align="center">
-<img src="https://cdn-ak.f.st-hatena.com/images/fotolife/i/itstaffing/20200617/20200617134342.jpg" height="150" />
-<br>
-<em>Fig. 他のチームメンバーがリビジョンの原因を知り、連絡を取るためのユーザー名と電子メール. <br>画像作：あいさん・r-staffing</em>
-</p>
-
-### 現在設定を確認
-
-現在のすべての設定を確認するには
-
-```bash
-$ git config --list
-user.name=John Doe
-user.email=johndoe@example.com
-color.status=auto
-color.branch=auto
-color.interactive=auto
-color.diff=auto
-...
-```
-
-詳細については—see [[SCM Book]](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
-
----
-
-## Scenario 1
-
-### シナリオの説明
+# Scenario 1
 
 新しいプロジェクトのためにローカルリポジトリを作成したいとします。後は、変更を加えたので、変更内容を確認したい。
 
 対象コマンド: `init`, `add`, `commit`, `log`
 
-### 1. 新しいgitフォルダの作成
+1. [新しいgitフォルダの作成](#1-新しいgitフォルダの作成)
+2. [リポジトリ内のファイルの状態を確認する](#2-リポジトリ内のファイルの状態を確認する)
+3. [変更をコミットにまとめる](#3-変更をコミットにまとめる)
+4. [実践編1: git commit](#4-実践編1-git-commit)
+
+## 1. 新しいgitフォルダの作成
 
 ```bash
 mkdir manga_db
@@ -111,7 +58,7 @@ total 0
 -rwxrwxrwx 1 elchris elchris 36 Feb 28 23:17 onepiece.txt
 ```
 
-### 2. リポジトリ内のファイルの状態を確認する
+## 2. リポジトリ内のファイルの状態を確認する
 
 次に、Git の状態をチェックして、それが私たちのレポの一部であるかどうかを確認します。
 
@@ -188,7 +135,7 @@ Changes to be committed:
 
 > もし、ルートディレクトリにいないときにすべてのファイルを追加したい場合は、`git add --all` を使用してください。
 
-### 変更をコミットにまとめる
+## 3. 変更をコミットにまとめる
 
 ```bash
 $ git commit -m "my first commit"
@@ -216,9 +163,9 @@ Date:   Tue Feb 28 23:49:27 2023 +0900
 - 著者名
 - コミットメッセージ
 
-### Gitコミット - 実践編1
+## 4. 実践編1: Git Commit
 
-#### 実践編1: 要求事項
+### 実践編1: 要求事項
 
 1. リポジトリに新しいファイルを追加しました (`toloveru.txt`)。内容については
 
@@ -231,14 +178,14 @@ haruna
 ```
 
 2. `zoro` の行を `naruto.txt` から `onepiece.txt` に移動する。
-3. これら2つの変更をメッセージ付きのコミットにまとめます。(例: `-m "間違った世界を修正するゾロ"`)
+3. これら2つの変更をメッセージ付きのコミットにまとめます。(例: `-m "トローベルを追加と間違った世界を修正するゾロ"`)
 4. 自分のコミットが Git に記録されているかどうかを確認するには、`git log` を使用します。
 
 *すべての要件が終了したら、次の方法で正しく実行されているかどうかを確認することについては*ーsee [[完成度検証]](#実践編1-完成度検証)
 
 ---
 
-#### 実践編1: 完成度検証
+### 実践編1: 完成度検証
 
 必要事項を確認するには、以下の手順に従ってください。
 
@@ -252,51 +199,31 @@ total 0
 -rwxrwxrwx 1 elchris elchris 35 Mar  1 09:52 toloveru.txt
 ```
 
-次に、ゾロはNARUTOではなくONE PIECEにいるべきということで、`naruto.txt`から削除し、`onepiece.txt`に追加することにします。
+2. 次に、ゾロはNARUTOではなくONE PIECEにいるべきということで、`naruto.txt`から削除し、`onepiece.txt`に追加することにします。
 
-```plain
-# ./naruto.txt
-
-naruto
-sasuke
-sakura
+```bash
+$ git status --short
+ M naruto.txt
+ M onepiece.txt
+?? toloveru.txt
 ```
 
-```plain
-# ./onepiece.txt
+3.
 
-luffy
-nami
-boa
-zoro
+```bash
+$ git log                                                
+commit 08849046e901bf9e68476cedb9525abe10bab2dd (HEAD -> master)
+Author: ***** <*****>
+Date:   *****
+
+    トローベルを追加と間違った世界を修正するゾロ
+
+commit cda059ec679ac7752dc695bb4ac1d92aad3f0472
+Author: ***** <*****>
+Date:   *****
+
+    my first commit
 ```
 
-### Repository
-
-リポジトリとは、あるものの倉庫を意味する。
-
-Gitでは、Gitにバージョン管理をさせたいディレクトリにリポジトリを作成します。一台のマシンや一人のユーザーが多くのリポジトリを持つことができます。
-
-マシンにGitソフトウェア（またはGitクライアント）をインストールした後：
-
-- 自分用のリポジトリ（ローカルリポジトリ, `Local Repository`）を作成する
-- リモートリポジトリ（`Remote Repository`; `Remote` = `ローカルではない`）をクローンする
-
-### git init
-
-###
-
-- チームリーダーがプロジェクトのチーム・リポジトリ (`Repository` or `Git Repo.`) を作成
-- 自分のマシンにGitシステムをインストールする必要があります。
-- すべての貢献者は、元のリポジトリ（またはリモートリポジトリ, `Remote Repository`）を自分のマシンにクローン(`clone`)します。貢献者は自分のローカルリポジト(`Local Repository`)リを変更します。
-
-<p align="center">
-<img src="https://www.w3docs.com/uploads/media/default/0001/03/3f26b30cc1dbda3424ceef3ab4977149906a0c58.png" height="300" />
-<em>`clone` は、自分のマシンにリモートリポジトリのコピーを作成します。</em>
-</p>
-
-- 自分のローカルコピーをプロジェクトの最新版(他の貢献者による変更)に更新するには、`git pull`（`pull` = `取って`）を使用します。
-- いくつかの変更 (`change`) を行った後、投稿者は変更を意味のあるバージョン・コミット (`commit`) にまとめることができます。
-- 多くのコミットを行った後、チームリポジトリに一括でプッシュ (`push`<>`pull`, `push`=`置いて`)することができます。
-
-バージョン管理では、チームメンバー全員がプロジェクトのコピー（ローカルリポジトリ "Local repository"）を持っています。プロジェクトのオリジナルコピー（リモートリポジトリ "Remote Repository"）は、会社のマシンに保管されていました。
+---
+[[MAIN]](../README.md) - [[BACK: Ch.2 Gitの基本コマンド]](./2-basics.md)
