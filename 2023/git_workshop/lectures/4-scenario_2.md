@@ -56,6 +56,8 @@ Password for 'https://elchris97@github.com':
 - `git branch -M`: 現在のブランチ名を `master` (デフォルト) から `main` (GitHub 標準) に変更する
 - `git push -u origin`: 現在のブランチを直接ホストリポジトリにプッシュする場合。
 
+> GitHubのリポジトリと連携するためには、GitHubのサーバーでユーザー名とセキュリティトークンを使って認証する必要があります。
+
 <p align="center">
 <img src="https://www.masatom.in/pukiwiki/?plugin=ref&page=GitHub%2F%A5%ED%A1%BC%A5%AB%A5%EB%A1%A6%A5%EA%A5%E2%A1%BC%A5%C8%A5%D6%A5%E9%A5%F3%A5%C1%A4%C8origin%A4%CE%A4%CF%A4%CA%A4%B7&src=01.png" height="300" />
 <br>
